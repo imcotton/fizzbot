@@ -1,0 +1,16 @@
+{
+  "name": "noops-fizzbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-modules index.js"
+  },
+  "engines": {
+    "node" : ">=12"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
+  "private": true
+}
