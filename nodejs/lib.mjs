@@ -6,5 +6,5 @@ import { processWrap, fetchWrap } from '../web/lib.mjs';
 
 
 
-export const process = processWrap(fetchWrap(fetch));
+export const process = processWrap(fetchWrap(() => fetch));
 

@@ -17,7 +17,7 @@ export function solve (rules = [], numbers = []) {
 
 
 
-export const process = processWrap(fetchWrap(globalThis.fetch));
+export const process = processWrap(fetchWrap(() => fetch));
 
 
 
@@ -69,9 +69,11 @@ export function processWrap (loadWrap) {
 
 
 
-export function fetchWrap (fetch) {
+export function fetchWrap (fetchThunk) {
 
     return function (base = '') {
+
+        const fetch = fetchThunk();
 
         return async function load (url = '', data) {
 
