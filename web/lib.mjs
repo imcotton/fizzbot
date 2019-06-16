@@ -126,7 +126,7 @@ export function outputTo (selector = 'body') {
                 last.appendChild(document.createTextNode(message));
 
                 const pre = document.createElement('pre');
-                pre.className = 'text-light bg-secondary py-1 px-2 mt-1 rounded-pill text-wrap';
+                pre.className = 'text-light bg-secondary py-1 px-2 mt-1 ml-auto rounded-pill text-wrap shrink';
                 pre.appendChild(document.createTextNode(answer));
 
                 last.appendChild(pre);
