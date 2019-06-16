@@ -83,7 +83,7 @@ export function fetchWrap (fetch) {
 
                 ...( hasData && { body: JSON.stringify(data) } ),
 
-                headers: { 'content-type': 'application/json' },
+                ...( hasData && { headers: { 'content-type': 'application/json' } } ),
 
             });
 
