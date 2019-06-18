@@ -113,9 +113,7 @@ export function outputTo (selector = 'body') {
 
                 target = sheet;
 
-                last = document.createElement('li');
-                last.className = 'list-group-item text-info bg-light pump-in';
-                last.appendChild(document.createTextNode(message));
+                last = createNode('li', message, 'list-group-item text-info bg-light pump-in');
 
                 target.prepend(last);
 
@@ -123,17 +121,12 @@ export function outputTo (selector = 'body') {
 
                 target = last;
 
-                last = document.createElement('blockquote');
-                last.className = 'text-right blockquote-footer mt-2';
-                last.appendChild(document.createTextNode(message));
+                last = createNode('blockquote', message, 'text-right blockquote-footer mt-2');
 
-                const pre = document.createElement('pre');
-                pre.className = 'text-light bg-secondary py-1 px-2 mt-1 ml-auto rounded-pill text-wrap shrink';
-                pre.appendChild(document.createTextNode(answer));
-
-                last.appendChild(pre);
+                last.appendChild(createNode('pre', answer, 'text-light bg-secondary py-1 px-2 mt-1 ml-auto rounded-pill text-wrap shrink'));
 
                 target.appendChild(last);
+
             }
 
         },
@@ -142,15 +135,13 @@ export function outputTo (selector = 'body') {
 
             target = sheet;
 
-            last = document.createElement('li');
-            last.className = 'list-group-item list-group-item-success d-flex justify-content-between align-items-center font-weight-bold';
-            last.appendChild(document.createTextNode(`Completed in: ${ elapsedSeconds }s`));
+            last = createNode(
+                'li',
+                `Completed in: ${ elapsedSeconds }s`,
+                'list-group-item list-group-item-success d-flex justify-content-between align-items-center font-weight-bold',
+            );
 
-            const badge = document.createElement('span');
-            badge.className = 'badge badge-success badge-pill';
-            badge.appendChild(document.createTextNode(grade));
-
-            last.appendChild(badge);
+            last.appendChild(createNode('span', grade, 'badge badge-success badge-pill'));
 
             target.prepend(last);
 
@@ -160,15 +151,27 @@ export function outputTo (selector = 'body') {
 
             target = sheet;
 
-            last = document.createElement('li');
-            last.className = 'list-group-item list-group-item-danger font-weight-bold';
-            last.appendChild(document.createTextNode(message));
+            last = createNode('li', message, 'list-group-item list-group-item-danger font-weight-bold');
 
             target.prepend(last);
 
         },
 
     });
+
+}
+
+
+
+function createNode (el = '', text = '', classes = '') {
+
+    const node = document.createElement(el);
+
+    node.className = classes;
+
+    node.appendChild(document.createTextNode(text));
+
+    return node;
 
 }
 
