@@ -1,0 +1,33 @@
+name: Check
+
+
+
+
+
+on: push
+
+
+
+
+
+jobs:
+
+  test:
+    name: Test
+    runs-on: ubuntu-18.04
+
+    steps:
+
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v1
+        with:
+          version: 12.x
+
+      - run: |-
+          cd nodejs
+          npm install -q
+          npm start
+
